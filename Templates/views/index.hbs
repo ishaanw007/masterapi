@@ -1,0 +1,187 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="http://fonts.cdnfonts.com/css/gotham" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="rs">
+    <div class="signin">
+
+      <form action="/register" method="POST" class="registerform">
+
+        <input type="text" name="pincode" id="pincode" placeholder="PINCODE" list="pincodes" onchange=getdata() />
+        <datalist id="pincodes">
+          <!-- 
+          <option>hello2</option> -->
+        </datalist>
+
+        <br />
+
+        <input type="text" name="state" id="state" placeholder="STATE" list="states" onchange=getdata() />
+        <datalist id="states">
+          <!-- <option>hello</option>
+          <option>hello2</option> -->
+        </datalist>
+
+        <br />
+
+        <input type="text" name="tehsil" id="tehsil" placeholder="TEHSIL" list="tehsils" onchange=getdata() />
+        <datalist id="tehsils">
+          <!-- <option>hello</option>
+          <option>hello2</option> -->
+        </datalist>
+
+        <br />
+
+        <input type="text" name="district" id="district" placeholder="DISTRICT" list="districts" onchange=getdata() />
+        <datalist id="districts">
+          <!-- <option>hello</option>
+          <option>hello2</option> -->
+        </datalist>
+
+        <br />
+
+        <input type="text" name="area" id="area" placeholder="AREA" list="areas" onchange=getdata() />
+        <datalist id="areas">
+          <!-- <option>hello</option>
+          <option>hello2</option> -->
+        </datalist>
+        <br />
+
+        <input type="submit" name="REGISTER" value="REGISTER" id="sub" />
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  let map1 = new Map();
+  function getdata() {
+
+    let request = [];
+    let answer = [];
+    let url = "";
+    let hello = "";
+    let pincode = new Set();
+    let state = new Set();
+    let area = new Set();
+    let district = new Set();
+    let tehsil = new Set();
+    let pincodes = document.getElementById("pincodes");
+    let states = document.getElementById("states");
+    let areas = document.getElementById("areas");
+    let districts = document.getElementById("districts");
+    let tehsils = document.getElementById("tehsils");
+
+
+    map1.set(event.target.id, event.target.value);
+
+    map1.forEach((value, key) => {
+      request.push(key);
+      answer.push(value);
+    });
+    let i = 0;
+    console.log(request.length)
+    for (i = 0; i <= request.length - 1; i++) {
+      console.log(request[i] + answer[i]);
+      let chalja = request[i];
+      let chalgya = answer[i]
+
+      url = `filters[${chalja}]=${chalgya}&` + hello
+      console.log(url);
+
+      hello = url;
+
+    }
+
+
+
+    let saveddata = ""
+
+    fetch(`http://68.183.89.150:1337/api/maps?${url}`)
+      .then(response => response.json())
+      .then(data => {
+        saveddata = data.data;
+        pincodes.innerHTML = "";
+        states.innerHTML = "";
+        areas.innerHTML = "";
+        tehsils.innerHTML = "";
+        districts.innerHTML = ""
+        for (let i = 0; i <= saveddata.length - 1; i++) {
+
+          pincode.add(saveddata[i].attributes.pincode);
+          state.add(saveddata[i].attributes.state);
+          district.add(saveddata[i].attributes.district);
+          area.add(saveddata[i].attributes.area);
+          tehsil.add(saveddata[i].attributes.tehsil);
+
+
+        }
+        pincode.forEach(element => {
+          console.log(element)
+          let newoption = document.createElement("option");
+          newoption.value = element;
+          newoption.innerHTML = element;
+          pincodes.appendChild(newoption);
+        })
+
+
+        state.forEach(element => {
+          let newoption = document.createElement("option");
+          newoption.value = element;
+          newoption.innerHTML = element;
+          states.appendChild(newoption);
+        })
+
+        area.forEach(element => {
+          let newoption = document.createElement("option");
+          newoption.value = element;
+          newoption.innerHTML = element;
+          areas.appendChild(newoption);
+        })
+
+        district.forEach(element => {
+          let newoption = document.createElement("option");
+          newoption.value = element;
+          newoption.innerHTML = element;
+          districts.appendChild(newoption);
+        })
+
+        tehsil.forEach(element => {
+          let newoption = document.createElement("option");
+          newoption.value = element;
+          newoption.innerHTML = element;
+          tehsils.appendChild(newoption);
+        })
+      })
+
+
+
+
+
+
+
+    console.log(pincode);
+    console.log(state);
+    console.log(area);
+    console.log(tehsil);
+    console.log(district);
+
+
+
+  }
+
+</script>

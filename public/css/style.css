@@ -1,0 +1,141 @@
+@import url('http://fonts.cdnfonts.com/css/gotham');
+* {
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --palette-color-1: rgb(0, 0, 0);
+    --palette-color-2: rgba(0, 0, 0, 0);
+    --palette-color-3: rgb(245, 245, 247);
+    --palette-color-4: rgba(255, 253, 253, 0.5);
+    --palette-color-5: rgb(255, 255, 255);
+    --palette-color-6: rgb(237, 28, 36);
+    --palette-color-7: rgb(0, 148, 68);
+    --palette-color-8: rgb(60, 90, 153);
+    --palette-color-9: rgb(219, 219, 219);
+    --palette-color-10: rgb(211, 209, 209);
+    --palette-color-11: rgb(34, 34, 34);
+    
+    
+    --palette-font-1: Times New Roman;
+    --palette-font-2: Gotham Book;
+    --palette-font-3: Gotham ;
+    --palette-font-4: Verdana;
+    --palette-font-5: Arial;
+    }
+    
+body{margin: 0; height: 100%; overflow: hidden}
+.navup{
+    display: flex;
+    justify-content: space-between;
+}
+
+.image{
+    margin-top: 15px;
+    height: 50px;
+    /* margin-left: 20px; */
+    padding-left: 150px;
+    width: 80px;
+}
+i{
+    font-size:  30px;
+    margin: 10px;
+    font-weight: lighter;
+}
+
+.options i{
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.navdown{
+    display: flex;
+    justify-content: center;
+    font-size: 10.5px;
+    font-family: var(--palette-font-4);
+}
+.navdown span{
+    margin-left: 65px;
+    margin-top: 20px;
+    font-weight: lighter;
+}
+
+.navdown span:hover{
+   font-weight: bolder;
+   cursor: pointer;
+}
+
+
+
+/* FORM */
+
+.rs{
+    position: absolute;
+    background-color: rgb(238, 237, 237);
+    
+    margin-top: 60px;
+    height: 100%;
+    font-family: var(--palette-font-3);
+    width: 99.99%;
+    /* border: red 1px groove; */
+}
+/* .signinform{
+    width: 50%;
+} */
+
+.signin{
+    
+    width: 40%;
+    justify-content: center;
+    
+    margin: auto;
+    
+}
+.signin p {
+    margin: 10px;
+    font-size: 13px;
+}
+
+
+.signin input{
+    margin: 3px;
+    height: 35px;
+    font-size: 11px;
+    border: none;
+    padding: 3px;
+}
+
+.signinform{
+    
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
+.signin #sub{
+ background-color: black;
+ color: white;
+ font-size: 12px;
+ 
+}
+
+.signinform h3{
+  margin: 10px;
+  font-family: var(--palette-font-3);
+  font-size: 14px;
+}
+.registerform{
+  
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    margin-top: 60px;
+}
+.name{
+    display: flex;
+}
+.name input{
+    width: 50%;
+    margin-bottom:10px;
+    
+}
