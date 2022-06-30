@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="http://fonts.cdnfonts.com/css/gotham" rel="stylesheet" />
+  <link href="//fonts.cdnfonts.com/css/gotham" rel="stylesheet" />
 
 </head>
 
@@ -111,7 +111,7 @@
 
     let saveddata = ""
 
-    fetch(`http://68.183.89.150:1337/api/maps?${url}`)
+    fetch(`//68.183.89.150:1337/api/maps?${url}`)
       .then(response => response.json())
       .then(data => {
         saveddata = data.data;
